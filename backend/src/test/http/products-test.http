@@ -1,0 +1,31 @@
+### 1. Récupérer tous les produits
+GET http://localhost:8080/api/products
+
+### 2. Filtrer par catégorie (t-shirts uniquement)
+GET http://localhost:8080/api/products?category=TEE_SHIRT
+
+### 3. Récupérer uniquement le stock dispo en concert (gigStock > 0)
+GET http://localhost:8080/api/products/gig-available
+
+### 4. Transférer 3 t-shirts L de la Maison vers la Caisse (toGigLocation = true)
+POST http://localhost:8080/api/products/1/transfer
+Content-Type: application/json
+
+{
+  "quantity": 3,
+  "toGigLocation": true
+}
+
+### 5. Créer un nouvel article
+POST http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+  "name": "Sweat Capuche Tournée",
+  "category": "TEE_SHIRT",
+  "size": "XL",
+  "price": 45.00,
+  "homeStock": 10,
+  "gigStock": 2,
+  "alertThreshold": 3
+}

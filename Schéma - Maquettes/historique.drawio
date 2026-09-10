@@ -1,0 +1,182 @@
+<mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="950" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- CADRE BROWSER -->
+    <mxCell id="hist_window" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#4B5563;strokeWidth=2;" vertex="1" parent="1">
+      <mxGeometry x="40" y="30" width="1180" height="880" as="geometry" />
+    </mxCell>
+
+    <!-- HEADER / NAVIGATION -->
+    <mxCell id="hist_navbar" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#111827;strokeColor=none;" vertex="1" parent="1">
+      <mxGeometry x="40" y="30" width="1180" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="hist_brand" value="🎸 RoadStock" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+      <mxGeometry x="65" y="45" width="160" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="hist_nav_inv" value="📦 Inventaire" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#9CA3AF;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="250" y="44" width="120" height="32" as="geometry" />
+    </mxCell>
+    <mxCell id="hist_nav_caisse" value="⚡ Caisse Concert" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#9CA3AF;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="385" y="44" width="130" height="32" as="geometry" />
+    </mxCell>
+    <mxCell id="hist_nav_active" value="📊 Historique" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#374151;strokeColor=none;fontColor=#FFFFFF;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="525" y="44" width="110" height="32" as="geometry" />
+    </mxCell>
+
+    <!-- TITRE ET ONGLETS DE SECTION -->
+    <mxCell id="hist_title" value="Historique &amp; Journal de Caisse" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1;fontColor=#111827;" vertex="1" parent="1">
+      <mxGeometry x="65" y="110" width="360" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="tab_ventes" value="🎟️ Ventes &amp; Encaissements" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2563EB;strokeColor=none;fontColor=#FFFFFF;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="65" y="160" width="200" height="36" as="geometry" />
+    </mxCell>
+    <mxCell id="tab_mouvements" value="⇄ Transferts de Stock" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#D1D5DB;fontColor=#4B5563;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="275" y="160" width="180" height="36" as="geometry" />
+    </mxCell>
+    <mxCell id="btn_export" value="📥 Exporter CSV (Compta)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1D5DB;fontColor=#374151;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="1005" y="110" width="185" height="38" as="geometry" />
+    </mxCell>
+
+    <!-- METRIQUES / BILAN CA -->
+    <mxCell id="ca_kpi1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F9FAFB;strokeColor=#E5E7EB;" vertex="1" parent="1">
+      <mxGeometry x="65" y="215" width="260" height="85" as="geometry" />
+    </mxCell>
+    <mxCell id="ca_kpi1_label" value="TOTAL ENCAISSÉ (FILTRE)" style="text;html=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#6B7280;" vertex="1" parent="1">
+      <mxGeometry x="85" y="225" width="180" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="ca_kpi1_val" value="620,00 €" style="text;html=1;strokeColor=none;fillColor=none;fontSize=24;fontStyle=1;fontColor=#059669;" vertex="1" parent="1">
+      <mxGeometry x="85" y="248" width="180" height="35" as="geometry" />
+    </mxCell>
+
+    <mxCell id="ca_kpi2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F9FAFB;strokeColor=#E5E7EB;" vertex="1" parent="1">
+      <mxGeometry x="350" y="215" width="260" height="85" as="geometry" />
+    </mxCell>
+    <mxCell id="ca_kpi2_label" value="PART CARTE (SUMUP)" style="text;html=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#6B7280;" vertex="1" parent="1">
+      <mxGeometry x="370" y="225" width="180" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="ca_kpi2_val" value="440,00 € (71%)" style="text;html=1;strokeColor=none;fillColor=none;fontSize=22;fontStyle=1;fontColor=#2563EB;" vertex="1" parent="1">
+      <mxGeometry x="370" y="248" width="200" height="35" as="geometry" />
+    </mxCell>
+
+    <mxCell id="ca_kpi3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F9FAFB;strokeColor=#E5E7EB;" vertex="1" parent="1">
+      <mxGeometry x="635" y="215" width="260" height="85" as="geometry" />
+    </mxCell>
+    <mxCell id="ca_kpi3_label" value="PART ESPÈCES (LIQUIDE)" style="text;html=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#6B7280;" vertex="1" parent="1">
+      <mxGeometry x="655" y="225" width="180" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="ca_kpi3_val" value="180,00 € (29%)" style="text;html=1;strokeColor=none;fillColor=none;fontSize=22;fontStyle=1;fontColor=#D97706;" vertex="1" parent="1">
+      <mxGeometry x="655" y="248" width="200" height="35" as="geometry" />
+    </mxCell>
+
+    <mxCell id="ca_kpi4" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F9FAFB;strokeColor=#E5E7EB;" vertex="1" parent="1">
+      <mxGeometry x="920" y="215" width="270" height="85" as="geometry" />
+    </mxCell>
+    <mxCell id="ca_kpi4_label" value="ARTICLES ÉCOULÉS" style="text;html=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#6B7280;" vertex="1" parent="1">
+      <mxGeometry x="940" y="225" width="180" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="ca_kpi4_val" value="34 articles" style="text;html=1;strokeColor=none;fillColor=none;fontSize=24;fontStyle=1;fontColor=#111827;" vertex="1" parent="1">
+      <mxGeometry x="940" y="248" width="180" height="35" as="geometry" />
+    </mxCell>
+
+    <!-- BARRE DE FILTRES -->
+    <mxCell id="filter_date" value="Date : Soirée en cours (Aujourd'hui) ▼" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1D5DB;align=left;spacingLeft=12;fontSize=13;fontColor=#374151;" vertex="1" parent="1">
+      <mxGeometry x="65" y="320" width="290" height="38" as="geometry" />
+    </mxCell>
+    <mxCell id="filter_pay" value="Paiement : Tous (CB &amp; Espèces) ▼" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1D5DB;align=left;spacingLeft=12;fontSize=13;fontColor=#374151;" vertex="1" parent="1">
+      <mxGeometry x="375" y="320" width="250" height="38" as="geometry" />
+    </mxCell>
+    <mxCell id="filter_concert" value="Lieu : Le Bikini - Toulouse ▼" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1D5DB;align=left;spacingLeft=12;fontSize=13;fontColor=#374151;" vertex="1" parent="1">
+      <mxGeometry x="645" y="320" width="240" height="38" as="geometry" />
+    </mxCell>
+
+    <!-- TABLEAU HISTORIQUE DES VENTES (EN-TÊTE) -->
+    <mxCell id="th_id" value="N° TICKET" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#E5E7EB;fontStyle=1;fontSize=11;fontColor=#4B5563;align=center;" vertex="1" parent="1">
+      <mxGeometry x="65" y="380" width="100" height="38" as="geometry" />
+    </mxCell>
+    <mxCell id="th_heure" value="DATE / HEURE" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#E5E7EB;fontStyle=1;fontSize=11;fontColor=#4B5563;align=left;spacingLeft=12;" vertex="1" parent="1">
+      <mxGeometry x="165" y="380" width="145" height="38" as="geometry" />
+    </mxCell>
+    <mxCell id="th_items" value="ARTICLES VENDUS (DÉTAIL)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#E5E7EB;fontStyle=1;fontSize=11;fontColor=#4B5563;align=left;spacingLeft=15;" vertex="1" parent="1">
+      <mxGeometry x="310" y="380" width="460" height="38" as="geometry" />
+    </mxCell>
+    <mxCell id="th_mode" value="PAIEMENT" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#E5E7EB;fontStyle=1;fontSize=11;fontColor=#4B5563;align=center;" vertex="1" parent="1">
+      <mxGeometry x="770" y="380" width="140" height="38" as="geometry" />
+    </mxCell>
+    <mxCell id="th_total_ticket" value="MONTANT" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#E5E7EB;fontStyle=1;fontSize=11;fontColor=#4B5563;align=right;spacingRight=15;" vertex="1" parent="1">
+      <mxGeometry x="910" y="380" width="130" height="38" as="geometry" />
+    </mxCell>
+    <mxCell id="th_act" value="ACTION" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#E5E7EB;fontStyle=1;fontSize=11;fontColor=#4B5563;align=center;" vertex="1" parent="1">
+      <mxGeometry x="1040" y="380" width="150" height="38" as="geometry" />
+    </mxCell>
+
+    <!-- LIGNE 1 -->
+    <mxCell id="l1_id" value="#TK-0142" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E5E7EB;align=center;fontSize=12;fontStyle=1;fontColor=#374151;" vertex="1" parent="1">
+      <mxGeometry x="65" y="418" width="100" height="52" as="geometry" />
+    </mxCell>
+    <mxCell id="l1_time" value="Aujourd'hui, 23:18" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E5E7EB;align=left;spacingLeft=12;fontSize=12;fontColor=#4B5563;" vertex="1" parent="1">
+      <mxGeometry x="165" y="418" width="145" height="52" as="geometry" />
+    </mxCell>
+    <mxCell id="l1_items" value="• 1x T-Shirt Logo (L) [20,00 €]&#xa;• 1x Vinyle Album Éponyme [25,00 €]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E5E7EB;align=left;spacingLeft=15;fontSize=12;fontColor=#111827;" vertex="1" parent="1">
+      <mxGeometry x="310" y="418" width="460" height="52" as="geometry" />
+    </mxCell>
+    <mxCell id="l1_mode" value="💳 CB (SumUp)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E5E7EB;align=center;fontSize=12;fontStyle=1;fontColor=#2563EB;" vertex="1" parent="1">
+      <mxGeometry x="770" y="418" width="140" height="52" as="geometry" />
+    </mxCell>
+    <mxCell id="l1_total" value="45,00 €" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E5E7EB;align=right;spacingRight=15;fontSize=13;fontStyle=1;fontColor=#111827;" vertex="1" parent="1">
+      <mxGeometry x="910" y="418" width="130" height="52" as="geometry" />
+    </mxCell>
+    <mxCell id="l1_btn" value="[ 👁️ Détails ]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E5E7EB;align=center;fontSize=12;fontColor=#2563EB;" vertex="1" parent="1">
+      <mxGeometry x="1040" y="418" width="150" height="52" as="geometry" />
+    </mxCell>
+
+    <!-- LIGNE 2 -->
+    <mxCell id="l2_id" value="#TK-0141" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E5E7EB;align=center;fontSize=12;fontStyle=1;fontColor=#374151;" vertex="1" parent="1">
+      <mxGeometry x="65" y="470" width="100" height="52" as="geometry" />
+    </mxCell>
+    <mxCell id="l2_time" value="Aujourd'hui, 23:05" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E5E7EB;align=left;spacingLeft=12;fontSize=12;fontColor=#4B5563;" vertex="1" parent="1">
+      <mxGeometry x="165" y="470" width="145" height="52" as="geometry" />
+    </mxCell>
+    <mxCell id="l2_items" value="• 1x T-Shirt Logo (M) [20,00 €]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E5E7EB;align=left;spacingLeft=15;fontSize=12;fontColor=#111827;" vertex="1" parent="1">
+      <mxGeometry x="310" y="470" width="460" height="52" as="geometry" />
+    </mxCell>
+    <mxCell id="l2_mode" value="💶 Espèces" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E5E7EB;align=center;fontSize=12;fontStyle=1;fontColor=#059669;" vertex="1" parent="1">
+      <mxGeometry x="770" y="470" width="140" height="52" as="geometry" />
+    </mxCell>
+    <mxCell id="l2_total" value="20,00 €" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E5E7EB;align=right;spacingRight=15;fontSize=13;fontStyle=1;fontColor=#111827;" vertex="1" parent="1">
+      <mxGeometry x="910" y="470" width="130" height="52" as="geometry" />
+    </mxCell>
+    <mxCell id="l2_btn" value="[ 👁️ Détails ]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E5E7EB;align=center;fontSize=12;fontColor=#2563EB;" vertex="1" parent="1">
+      <mxGeometry x="1040" y="470" width="150" height="52" as="geometry" />
+    </mxCell>
+
+    <!-- LIGNE 3 -->
+    <mxCell id="l3_id" value="#TK-0140" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E5E7EB;align=center;fontSize=12;fontStyle=1;fontColor=#374151;" vertex="1" parent="1">
+      <mxGeometry x="65" y="522" width="100" height="52" as="geometry" />
+    </mxCell>
+    <mxCell id="l3_time" value="Aujourd'hui, 22:52" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E5E7EB;align=left;spacingLeft=12;fontSize=12;fontColor=#4B5563;" vertex="1" parent="1">
+      <mxGeometry x="165" y="522" width="145" height="52" as="geometry" />
+    </mxCell>
+    <mxCell id="l3_items" value="• 2x CD Digipack EP [20,00 €]&#xa;• 1x T-Shirt Logo (XL) [20,00 €]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E5E7EB;align=left;spacingLeft=15;fontSize=12;fontColor=#111827;" vertex="1" parent="1">
+      <mxGeometry x="310" y="522" width="460" height="52" as="geometry" />
+    </mxCell>
+    <mxCell id="l3_mode" value="💳 CB (SumUp)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E5E7EB;align=center;fontSize=12;fontStyle=1;fontColor=#2563EB;" vertex="1" parent="1">
+      <mxGeometry x="770" y="522" width="140" height="52" as="geometry" />
+    </mxCell>
+    <mxCell id="l3_total" value="40,00 €" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E5E7EB;align=right;spacingRight=15;fontSize=13;fontStyle=1;fontColor=#111827;" vertex="1" parent="1">
+      <mxGeometry x="910" y="522" width="130" height="52" as="geometry" />
+    </mxCell>
+    <mxCell id="l3_btn" value="[ 👁️ Détails ]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E5E7EB;align=center;fontSize=12;fontColor=#2563EB;" vertex="1" parent="1">
+      <mxGeometry x="1040" y="522" width="150" height="52" as="geometry" />
+    </mxCell>
+
+    <!-- PAGINATION -->
+    <mxCell id="pag_info" value="Affichage de 1 à 3 sur 28 tickets de la soirée" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=12;fontColor=#6B7280;" vertex="1" parent="1">
+      <mxGeometry x="65" y="600" width="300" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="pag_btns" value="[ ‹ Précédent ]   Page 1 / 10   [ Suivant › ]" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;fontSize=12;fontColor=#374151;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="920" y="600" width="270" height="30" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>
