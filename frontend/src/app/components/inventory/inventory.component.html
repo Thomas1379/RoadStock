@@ -1,0 +1,163 @@
+<div class="inventory-layout">
+  <!-- Navigation supérieure -->
+  <header class="navbar">
+    <div class="brand">🎸 RoadStock</div>
+    <nav class="nav-links">
+      <a class="nav-item active">📦 Inventaire</a>
+      <a class="nav-item">⚡ Caisse Concert</a>
+      <a class="nav-item">📊 Historique</a>
+    </nav>
+  </header>
+
+  <main class="content">
+    <!-- En-tête de page -->
+    <div class="page-header">
+      <h1>Tableau de Bord - Inventaire</h1>
+      <div class="header-actions">
+        <button class="btn btn-secondary">⇄ Transférer du stock</button>
+        <button class="btn btn-primary">+ Nouveau Produit</button>
+      </div>
+    </div>
+
+    <!-- Bandeau KPI -->
+    <section class="kpi-grid">
+      <div class="kpi-card">
+        <span class="kpi-label">RÉFÉRENCES ACTIVES</span>
+        <span class="kpi-value">{{ filteredProducts.length }} articles</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">VALEUR DU STOCK DISPONIBLE</span>
+        <span class="kpi-value">{{ totalValue | number:'1.2-2' }} €</span>
+      </div>
+      <div class="kpi-card kpi-alert" [class.has-alerts]="lowStockCount > 0">
+        <span class="kpi-label">ALERTES RUPTURE</span>
+        <span class="kpi-value">{{ lowStockCount }} articles critiques</span>
+      </div>
+    </section>
+
+    <!-- Filtres & recherche -->
+    <section class="filters-bar">
+      <div class="search-box">
+        <input
+          type="text"
+          placeholder="🔍 Rechercher un produit..."
+          [(ngModel)]="searchQuery"
+        />
+      </div>
+
+      <div class="filter-select">
+        <select [(ngModel)]="selectedCategory" (change)="loadProducts()">
+          <option value="ALL">Catégorie : Toutes</option>
+          <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+        </select>
+      </div>
+
+      <label class="filter-checkbox">
+        <input type="checkbox" [(ngModel)]="onlyLowStock" />
+        <span>Afficher uniquement les alertes</span>
+      </label>
+    </section>
+
+    <!-- Tableau de stock -->
+    <div class="table-container">
+      <table class="inventory-table">
+        <thead>
+        <tr>
+          <th>PRODUIT</th>
+          <th class="text-center">CATÉGORIE / TAILLE</th>
+          <th class="text-right">PRIX U.</th>
+          <th class="text-center">STOCK MAISON</th>
+          <th class="text-center">STOCK CAISSE</th>
+          <th class="text-center">TOTAL DISPO</th>
+          <th class="text-center">ACTIONS</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let product of filteredProducts" [class.row-alert]="isLowStock(product)">
+          <td class="product-name">{{ product.name }}</td>
+          <td class="text-center">
+              <span class="badge category-badge">
+                {{ product.category }}
+                <ng-container *ngIf="product.size">({{ product.size }})</ng-container>
+              </span>
+          </td>
+          <td class="text-right font-mono">{{ product.price | number:'1.2-2' }} €</td>
+          <td class="text-center">{{ product.homeStock }}</td>
+          <td class="text-center" [class.text-danger]="product.gigStock === 0">
+            {{ product.gigStock }}
+          </td>
+          <td class="text-center">
+              <span class="stock-total" [class.stock-warning]="isLowStock(product)">
+                {{ product.homeStock + product.gigStock }}
+                <span *ngIf="isLowStock(product)" title="Seuil critique : {{ product.alertThreshold }}">⚠️</span>
+              </span>
+          </td>
+          <td class="text-center actions-cell">
+            <button class="btn-action edit" title="Modifier">✎ Éditer</button>
+            <button class="btn-action transfer" (click)="openTransferModal(product)" title="Transférer du stock">
+              ⇄ Transférer
+            </button>
+          </td>
+        </tr>
+
+        <tr *ngIf="filteredProducts.length === 0">
+          <td colspan="7" class="empty-state">Aucun produit ne correspond à ces critères.</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Modale de transfert de stock rapide -->
+  <div class="modal-backdrop" *ngIf="selectedProductForTransfer">
+    <div class="modal-card">
+      <h2>Transfert de Stock : {{ selectedProductForTransfer.name }}</h2>
+      <p class="modal-subtitle" *ngIf="selectedProductForTransfer.size">
+        Déclinaison : Taille {{ selectedProductForTransfer.size }}
+      </p>
+
+      <div class="stock-recap">
+        <span>Stock Maison actuel : <strong>{{ selectedProductForTransfer.homeStock }}</strong></span>
+        <span>Stock Caisse actuel : <strong>{{ selectedProductForTransfer.gigStock }}</strong></span>
+      </div>
+
+      <div class="form-group">
+        <label>Sens du mouvement :</label>
+        <div class="direction-switch">
+          <button
+            type="button"
+            [class.active]="transferToGig"
+            (click)="transferToGig = true">
+            Maison ➔ Caisse Concert (Départ)
+          </button>
+          <button
+            type="button"
+            [class.active]="!transferToGig"
+            (click)="transferToGig = false">
+            Caisse Concert ➔ Maison (Retour)
+          </button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="qty">Quantité à transférer :</label>
+        <input
+          id="qty"
+          type="number"
+          min="1"
+          [(ngModel)]="transferQuantity"
+          class="input-qty"
+        />
+      </div>
+
+      <div class="alert-box-error" *ngIf="transferErrorMessage">
+        {{ transferErrorMessage }}
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-secondary" (click)="closeTransferModal()">Annuler</button>
+        <button class="btn btn-success" (click)="confirmTransfer()">Confirmer le transfert</button>
+      </div>
+    </div>
+  </div>
+</div>
