@@ -3,9 +3,25 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product, ProductCategory, StockTransferRequest } from '../models/product.model';
 
+export interface SaleItemRequest {
+  productId: number;
+  quantity: number;
+}
+
+export interface CreateSaleRequest {
+  paymentMethod: 'CASH' | 'CARD';
+  items: SaleItemRequest[];
+}
+
+export interface CartItem {
+  product: Product;
+  quantity: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProductService {
   private readonly http = inject(HttpClient);
   private readonly apiUrl = 'http://localhost:8080/api/products';
@@ -40,4 +56,9 @@ export class ProductService {
   transferStock(id: number, request: StockTransferRequest): Observable<Product> {
     return this.http.post<Product>(`${this.apiUrl}/${id}/transfer`, request);
   }
+
+  createSale(request: CreateSaleRequest): Observable<any> {
+    return this.http.post('http://localhost:8080/api/sales', request);
+  }
+
 }
