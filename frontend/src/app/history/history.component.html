@@ -1,0 +1,119 @@
+<div class="history-container">
+  <!-- En-tête de la page -->
+  <div class="page-header">
+    <div class="header-titles">
+      <h1>Historique & Journal de Caisse</h1>
+      <p class="subtitle">Bilan des encaissements et détail des transactions en live</p>
+    </div>
+    <div class="header-actions">
+      <button class="btn-export" (click)="exportToCsv()">
+        📥 Exporter CSV (Compta)
+      </button>
+    </div>
+  </div>
+
+  <!-- Messages d'état -->
+  <div *ngIf="errorMessage" class="alert error">{{ errorMessage }}</div>
+  <div *ngIf="isLoading" class="loading-state">Chargement des transactions...</div>
+
+  <!-- Cartes KPI financières -->
+  <div class="kpi-grid">
+    <div class="kpi-card revenue">
+      <span class="kpi-label">TOTAL ENCAISSÉ</span>
+      <strong class="kpi-value">{{ totalRevenue | currency:'EUR':'symbol':'1.2-2' }}</strong>
+      <span class="kpi-hint">Montant brut filtré</span>
+    </div>
+
+    <div class="kpi-card card">
+      <span class="kpi-label">PART CARTE (SUMUP)</span>
+      <strong class="kpi-value">{{ cardRevenue | currency:'EUR':'symbol':'1.2-2' }}</strong>
+      <span class="kpi-badge">{{ cardPercentage }}%</span>
+    </div>
+
+    <div class="kpi-card cash">
+      <span class="kpi-label">PART ESPÈCES (LIQUIDE)</span>
+      <strong class="kpi-value">{{ cashRevenue | currency:'EUR':'symbol':'1.2-2' }}</strong>
+      <span class="kpi-badge">{{ cashPercentage }}%</span>
+    </div>
+
+    <div class="kpi-card items">
+      <span class="kpi-label">ARTICLES ÉCOULÉS</span>
+      <strong class="kpi-value">{{ totalItemsSold }}</strong>
+      <span class="kpi-hint">Unités vendues au stand</span>
+    </div>
+  </div>
+
+  <!-- Barre de filtres -->
+  <div class="filters-bar">
+    <div class="filter-group">
+      <label for="paymentFilter">Paiement :</label>
+      <select
+        id="paymentFilter"
+        [ngModel]="selectedPaymentFilter"
+        (ngModelChange)="onFilterChange($event)">
+        <option value="ALL">Tous (CB & Espèces)</option>
+        <option value="CARD">Carte Bancaire (SumUp)</option>
+        <option value="CASH">Espèces</option>
+      </select>
+    </div>
+
+    <div class="counter-badge">
+      {{ filteredSales.length }} ticket(s) enregistré(s)
+    </div>
+  </div>
+
+  <!-- Tableau des transactions -->
+  <div class="table-card">
+    <table class="history-table">
+      <thead>
+      <tr>
+        <th>N° TICKET</th>
+        <th>DATE / HEURE</th>
+        <th>ARTICLES VENDUS (DÉTAIL)</th>
+        <th>PAIEMENT</th>
+        <th class="text-right">MONTANT</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngIf="filteredSales.length === 0 && !isLoading">
+        <td colspan="5" class="empty-state">
+          Aucun encaissement trouvé.
+        </td>
+      </tr>
+
+      <tr *ngFor="let sale of filteredSales">
+        <!-- Numéro de ticket formaté TK-XXXX -->
+        <td class="ticket-cell">
+          <strong>#TK-{{ sale.id.toString().padStart(4, '0') }}</strong>
+        </td>
+
+        <!-- Date et Heure -->
+        <td class="date-cell">
+          {{ sale.saleDate | date:'dd/MM/yyyy, HH:mm':'Europe/Paris' }}
+        </td>
+
+        <!-- Lignes d'articles vendus -->
+        <td class="items-cell">
+          <div *ngFor="let item of sale.items" class="sold-item-line">
+            <span class="item-qty">{{ item.quantity }}x</span>
+            <span class="item-name">{{ item.product?.name || 'Article' }}</span>
+            <span class="item-price">[{{ (item.unitPrice * item.quantity) | currency:'EUR':'symbol':'1.2-2' }}]</span>
+          </div>
+        </td>
+
+        <!-- Mode de paiement -->
+        <td class="payment-cell">
+            <span class="badge" [class.badge-card]="sale.paymentMethod === 'CARD'" [class.badge-cash]="sale.paymentMethod === 'CASH'">
+              {{ sale.paymentMethod === 'CARD' ? '💳 CB (SumUp)' : '💵 Espèces' }}
+            </span>
+        </td>
+
+        <!-- Montant Total -->
+        <td class="amount-cell text-right">
+          <strong>{{ sale.totalAmount | currency:'EUR':'symbol':'1.2-2' }}</strong>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

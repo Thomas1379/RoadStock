@@ -18,6 +18,21 @@ export interface CartItem {
   quantity: number;
 }
 
+export interface SaleItemResponse {
+  id: number;
+  product: Product;
+  quantity: number;
+  unitPrice: number;
+}
+
+export interface SaleResponse {
+  id: number;
+  saleDate: string;
+  paymentMethod: 'CASH' | 'CARD';
+  totalAmount: number;
+  items: SaleItemResponse[];
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -59,6 +74,10 @@ export class ProductService {
 
   createSale(request: CreateSaleRequest): Observable<any> {
     return this.http.post('http://localhost:8080/api/sales', request);
+  }
+
+  getAllSales(): Observable<SaleResponse[]> {
+    return this.http.get<SaleResponse[]>('http://localhost:8080/api/sales');
   }
 
 }
