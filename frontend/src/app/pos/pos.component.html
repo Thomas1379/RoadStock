@@ -1,0 +1,92 @@
+<div class="pos-container">
+  <!-- Colonne Gauche : Grille tactile -->
+  <div class="catalog-section">
+    <div class="category-tabs">
+      <button
+        *ngFor="let cat of categories"
+        [class.active]="selectedCategory === cat"
+        (click)="filterByCategory(cat)">
+        {{ cat }}
+      </button>
+    </div>
+
+    <div *ngIf="errorMessage" class="alert error">{{ errorMessage }}</div>
+    <div *ngIf="successMessage" class="alert success">{{ successMessage }}</div>
+
+    <div class="grid-products">
+      <div
+        *ngFor="let product of filteredProducts"
+        class="product-card"
+        (click)="addToCart(product)">
+        <div class="product-info">
+          <span class="product-name">{{ product.name }}</span>
+          <span class="product-badge">{{ product.category }}</span>
+        </div>
+        <div class="product-meta">
+          <span class="stock-badge">Stock Caisse : {{ product.gigStock }}</span>
+          <span class="product-price">{{ product.price | currency:'EUR':'symbol':'1.2-2' }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Colonne Droite : Ticket de caisse -->
+  <div class="ticket-section">
+    <div class="ticket-header">
+      <h2>Ticket de Caisse</h2>
+      <button class="btn-clear" (click)="clearCart()" [disabled]="cart.length === 0">Vider</button>
+    </div>
+
+    <div class="ticket-body">
+      <div *ngIf="cart.length === 0" class="empty-ticket">
+        <p>Le ticket est vide.</p>
+        <small>Touche un produit pour l'ajouter.</small>
+      </div>
+
+      <div *ngFor="let item of cart" class="ticket-line">
+        <div class="line-title">
+          <strong>{{ item.product.name }}</strong>
+          <span>{{ (item.product.price * item.quantity) | currency:'EUR':'symbol':'1.2-2' }}</span>
+        </div>
+        <div class="line-controls">
+          <span class="unit-price">{{ item.product.price | currency:'EUR':'symbol':'1.2-2' }} / u</span>
+          <div class="qty-actions">
+            <button (click)="decreaseQuantity(item)">-</button>
+            <span class="qty">{{ item.quantity }}</span>
+            <button (click)="increaseQuantity(item)" [disabled]="item.quantity >= item.product.gigStock">+</button>
+            <button class="btn-remove" (click)="removeFromCart(item)">✕</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ticket-footer">
+      <div class="total-row">
+        <span>Total ({{ totalItemsCount }} art.)</span>
+        <strong class="total-price">{{ totalAmount | currency:'EUR':'symbol':'1.2-2' }}</strong>
+      </div>
+
+      <div class="payment-selector">
+        <button
+          type="button"
+          [class.selected]="paymentMethod === 'CARD'"
+          (click)="paymentMethod = 'CARD'">
+          💳 Carte (CB)
+        </button>
+        <button
+          type="button"
+          [class.selected]="paymentMethod === 'CASH'"
+          (click)="paymentMethod = 'CASH'">
+          💵 Espèces
+        </button>
+      </div>
+
+      <button
+        class="btn-checkout"
+        [disabled]="cart.length === 0 || isLoading"
+        (click)="validateSale()">
+        {{ isLoading ? 'Validation...' : 'Encaisser ' + (totalAmount | currency:'EUR':'symbol':'1.2-2') }}
+      </button>
+    </div>
+  </div>
+</div>

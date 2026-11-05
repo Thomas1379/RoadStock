@@ -1,0 +1,43 @@
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background-color: #1a1a1a;
+  color: #fff;
+  border-bottom: 1px solid #333;
+
+  .brand {
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.5px;
+  }
+
+  .main-nav {
+    display: flex;
+    gap: 12px;
+
+    a {
+      color: #aaa;
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+
+      &:hover {
+        color: #fff;
+        background-color: rgba(255, 255, 255, 0.08);
+      }
+
+      &.active {
+        color: #fff;
+        background-color: #0070f3;
+      }
+    }
+  }
+}
+
+.main-content {
+  padding: 16px;
+}
