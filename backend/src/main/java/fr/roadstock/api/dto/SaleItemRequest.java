@@ -1,4 +1,7 @@
 package fr.roadstock.api.dto;
 
-public record SaleItemRequest() {
+public record SaleItemRequest(
+        Long productId,
+        Integer quantity
+) {
 }
